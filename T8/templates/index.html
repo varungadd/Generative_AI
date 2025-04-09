@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Summarization by Varun</title>
+    <style>
+        /* Body and overall background */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Vibrant gradient background */
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Main container for content */
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+        }
+
+        /* Input styles */
+        textarea, select, button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            transition: all 0.3s ease;
+        }
+
+        textarea {
+            height: 150px; /* Spacious area for text input */
+            font-size: 16px;
+            color: #333;
+        }
+
+        select, button {
+            font-size: 16px;
+            color: #333;
+        }
+
+        textarea:focus, select:focus, button:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #4caf50; /* Pleasant green */
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Header styling */
+        h1 {
+            color: #333; /* Dark color for contrast */
+            text-transform: uppercase; /* Ensures the header is bold and noticeable */
+            margin-bottom: 20px;
+        }
+
+        /* Styling for the summary results */
+        .summary {
+            text-align: left;
+            background-color: #f8f9fa; /* Very light gray for summary box */
+            border-left: 5px solid #4caf50; /* Thematic green border on the left */
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            color: #333; /* Dark text for readability */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text summarization by Varun</h1>
+        <form action="/" method="post">
+            <textarea name="text" placeholder="Enter text here..."></textarea>
+            <select name="model_choice">
+                <option value="t5-small">T5 Small</option>
+                <option value="t5-base">T5 Base</option>
+                <option value="t5-large">T5 Large</option>
+                <option value="bart">BART</option>
+                <option value="pegasus">Pegasus</option>
+            </select>
+            <button type="submit">Summarize</button>
+        </form>
+        {% if summary %}
+        <div class="summary">
+            <strong>Summary:</strong>
+            <p>{{ summary }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
